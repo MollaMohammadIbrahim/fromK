@@ -20,10 +20,10 @@ int extendedEuclid(int a,int b){
         y = 0;
     }
     else{
-        extendedEuclid(b,(a%b)%b);
-        int temp = x%b;
-        x = y%b;
-        y =( temp - ((a/b)*y)%b)%b;
+        extendedEuclid(b,(a%b));
+        int temp = x;
+        x = y;
+        y =( temp - (a/b)*y);
     }
     return x;
 }
@@ -34,8 +34,8 @@ int main(){
     int ans1,ans2,ans;
     ans1 = moduloExponentiation(a,b,m);
 
-    ans2 = extendedEuclid(a,m);
+    ans2 = extendedEuclid(c,m);
     
-    ans = (ans1*ans2)%m;
+    ans = ((ans1%m)*(ans2%m))%m;
     cout<<ans<<endl;
 }
